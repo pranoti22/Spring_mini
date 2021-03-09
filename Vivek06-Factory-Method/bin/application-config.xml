@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="b" class="bank.server.internal.BankImpl"  factory-method="getInstance" init-method="init" destroy-method="destroy" scope="prototype">
+   <!-- <constructor-arg name="acctRepo1" ref="accountRepo" />
+    <constructor-arg name="branchCode" value="1234" />-->
+   
+   </bean>
+   <bean id="accountRepo" class="bank.server.internal.AccountRepositoryImpl" >
+    
+    </bean>
+    
+<!--  Pl. note that the constructor-arg here is not actually constructor arg names but
+argument names in getInstance factory method method can take 2 arguments but bankService may not need any of them-->
+
+  
+
+
+</beans>

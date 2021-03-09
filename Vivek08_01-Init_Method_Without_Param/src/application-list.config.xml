@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<import resource="test-infrastructure-config.xml" />
+<bean id="bankService" class="bank.server.internal.BankImpl" init-method="doInit"  destroy-method="destroy" scope="singleton">
+    <property name="accountRepo" >
+       <bean class="bank.server.internal.AccountRepositoryImpl" >
+          <constructor-arg name="dataSource" ref="dataSource" />
+       </bean>
+    </property>
+  </bean>
+</beans>
+
+<!--
+ <bean id="pwd.digester.mac" class="javax.crypto.Mac" factory-method="getInstance" scope="prototype">
+<constructor-arg type="java.lang.String" value="HmacSHA1" />
+</bean>
+
+<bean id="pwd.digester.mac.init" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+<property name="targetObject" ref="pwd.digester.mac" />
+<property name="targetMethod" value="init" />
+<property name="arguments">
+<list>
+<ref local="pwd.digester.key" />
+</list>
+</property>
+</bean>
+     
+ -->

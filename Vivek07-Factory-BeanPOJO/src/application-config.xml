@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<bean id="bankService" class="bank.server.internal.BankImpl"   factory-bean="bankFactory" factory-method="getInstance" scope="prototype">
+    <constructor-arg name="acctRepo" ref="accountRepo"/>
+  </bean>
+   <bean id="accountRepo" class="bank.server.internal.AccountRepositoryImpl" >
+    
+    </bean>
+    <bean id="bankFactory" class="bank.server.internal.BankFactory" />
+
+
+  <!--  Here constructor-arg actually is an argument to the factory-method and not a constructor arg for BankImpl -->
+
+
+</beans>

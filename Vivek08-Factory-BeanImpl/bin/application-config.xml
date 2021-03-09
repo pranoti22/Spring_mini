@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+		<bean id="bankService" class="bank.server.internal.BankImpl"
+			scope="prototype">
+			<constructor-arg name="accountRepo"
+				ref="accountRepoFactory" />
+		</bean>
+		  <bean id="accountRepoFactory"
+			class="bank.server.internal.AccountRepositoryFactory" />
+		 <bean id="accountRepo" class="bank.server.internal.AccountRepositoryImpl" />
+
+
+	</beans>
+
+
+
+
+

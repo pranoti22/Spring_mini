@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="bankService" abstract="true" >
+    <constructor-arg >
+       <bean class="bank.server.internal.AccountRepositoryImpl" />
+    </constructor-arg>
+    <constructor-arg>
+       <props>
+           <prop key="CURRENT ACCOUNT" >hello </prop>
+           <prop key="SAVING ACCOUNT">saving</prop>
+           <prop key="LOAN ACCOUNT" >loan </prop>
+       </props>
+    </constructor-arg>
+    <property name="branchCode" value="1234" />
+    <property name="bankName" value="SBI"></property>
+     
+</bean>
+    <bean id="sbi" class="bank.server.internal.SBI" parent="bankService" >
+        
+    </bean>
+    <bean id="axis" class="bank.server.internal.AXIS" parent="bankService" >
+        <property name="branchCode" value="345" />
+        <property name="bankName" value="AXIS"></property>
+    </bean>
+<bean id="current" class="bank.server.internal.CurentAccount" >
+   <constructor-arg name="custName" value="Vivek Kulkarni" />
+   <constructor-arg  name="balance" value="10000000" />
+   <property name="acctNo" value ="12345" />
+</bean>
+<bean id="saving" class="bank.server.internal.SavingsType" >
+   <constructor-arg name="custName" value="Vivek Kulkarni" />
+   <constructor-arg  name="interestRate" value="3.5" />
+</bean>
+<bean id="loan" class="bank.server.internal.LoanAccount" >
+   <constructor-arg name="loanType" value="HomeLoan" />
+   <constructor-arg  name="loanTerm" value="25" />
+   <property name="rateOfInterest" value="10.7" />
+</bean>
+
+  
+
+
+</beans>
